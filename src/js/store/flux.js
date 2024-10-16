@@ -15,18 +15,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                     },
                   };
                   
-                  fetch("https://playground.4geeks.com/contact/agendas/semana/contacts", requestOptions)
+                  fetch('https://playground.4geeks.com/contact/agendas/semana/contacts', requestOptions)
                     .then(response =>{
                         if (!response.ok) {
                             throw new Error ("response was not ok")
                         }
-                      return  response.json ()
+                      return  response.json()
                     }) 
                     .then(data => {
-                        console.log( "api response", data)
+                       
                         setStore({
                             contacts: data.contacts
                         });
+                        console.log( "api response", data.contacts)
                     })
                     .catch(error => console.error (error));  
             }, 
@@ -65,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     },
                     body: JSON.stringify({ name, phone, email, address }),
                 };
-                fetch(`https://playground.4geeks.com/contact/${id}`, options)
+                fetch(`https://playground.4geeks.com/contact/agendas/semana/contacts/${id}`, options)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error("No se pudo actualizar el contacto");
@@ -89,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         "Content-Type": "application/json",
                     },
                 };
-                fetch(`https://playground.4geeks.com/contact/${id}`, options)
+                fetch(`https://playground.4geeks.com/contact/agendas/semana/contacts/${id}`, options)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error("No se pudo eliminar el contacto");
