@@ -10,6 +10,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { AddContacts } from "./views/addcontacts";
 import Home from "./views/home";
+import { EditContacts } from "./views/editContacts";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -22,11 +23,11 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
-						<Route path="/" element={<Contact />} />
+						<Route path="/" element={<Home />} />
 						<Route path="/addContacts" element={<AddContacts />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
-						<Route path="/Contact" element={<Contact />} />
+						<Route path="/EditContact" element={<EditContacts />} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>

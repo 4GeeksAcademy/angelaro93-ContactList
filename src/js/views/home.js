@@ -2,11 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router";
 
 const Contact = (props) => {
   const { store, actions } = useContext(Context);
   const [editContact, setEditContact] = useState(null);
   const [updateContact, setUpdateContact] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleDelete = (id) => {
     actions.deleteContact(id);
@@ -14,7 +17,8 @@ const Contact = (props) => {
   };
 
   const handleEdit = (contact) => {
-    setEditContact(contact);
+    actions.selectEditContact(contact)
+    navigate("/EditContact")
   };
 
   const handleUpdate = async (contact) => {

@@ -1,11 +1,17 @@
 import { Navigate } from "react-router"; 
+import { EditContacts } from "../views/editContacts";
 
 const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
            contacts: [],
+           editContact: null
         },
         actions: {
+
+            selectEditContact: (contact) => {
+                setStore ({editContact: contact})
+            },
            
             getAllContacts: () => {
                 const requestOptions = {
@@ -64,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ name, phone, email, address }),
+                    body: JSON.stringify({ name:name, phone:phone, email:email, address:address }),
                 };
                 fetch(`https://playground.4geeks.com/contact/agendas/semana/contacts/${id}`, options)
                     .then(response => {
